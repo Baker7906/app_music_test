@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -27,7 +28,7 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>app_music</title>
   <link rel="manifest" href="manifest.json">
@@ -39,21 +40,37 @@
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
+
 <body>
   <script>
-    window.addEventListener('load', function(ev) {
+    window.addEventListener('load', function (ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer.initializeEngine().then(function (appRunner) {
             appRunner.runApp();
           });
         }
       });
     });
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDsrP7o07rBRvGiNpjZDWs0XcIfAU3_SgM",
+      authDomain: "music-app-a56e3.firebaseapp.com",
+      projectId: "music-app-a56e3",
+      storageBucket: "music-app-a56e3.appspot.com",
+      messagingSenderId: "783687817005",
+      appId: "1:783687817005:web:f6ec40004e394292a525a4",
+      measurementId: "G-M87YRT41QD"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
   </script>
 </body>
+
 </html>

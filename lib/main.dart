@@ -1,164 +1,54 @@
-import 'package:app_music/screens/menu_screen.dart';
-import 'package:app_music/screens/music_play.dart';
+import 'package:app_music/colors.dart';
+import 'package:app_music/layouts/music_controls.dart';
+import 'package:app_music/layouts/sidebar.dart';
+import 'package:app_music/firebase_options.dart';
+import 'package:app_music/screens/home.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-void main() {
-  runApp(const App());
+const int smallSize = 1000;
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(const ProviderScope(child: EntrypointApp()));
 }
 
-class App extends StatelessWidget {
-  const App({super.key,});
+class EntrypointApp extends StatelessWidget {
+  const EntrypointApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final theme = ThemeData(
-      colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 97, 97, 97),
-          brightness: Brightness.dark),
-      textTheme: GoogleFonts.latoTextTheme(),
-    );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: theme,
+      darkTheme: ThemeData(
+        fontFamily: 'NotoSans',
+        scaffoldBackgroundColor: AppColors.dark2,
+      ),
+      themeMode: ThemeMode.dark,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "Rhymitics",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-            ),
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.notifications),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.account_circle),
-            ),
-          ],
-        ),
-        body: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        appBar: null,
+        body: Stack(
+          fit: StackFit.loose,
           children: [
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Text(
-                    "Menu",
-                    style: TextStyle(
-                      color: Color.fromARGB(124, 255, 255, 255),
-                      fontSize: 20,
-                    ),
-                  ),
-                  Text(
-                    "Search",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Radio",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Podcast",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Music",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Music Videos",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Favourites",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  Text(
-                    "Organizations",
-                    style: TextStyle(
-                        color: Color.fromARGB(139, 255, 255, 255),
-                        fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "About us ",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Search",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Security",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Help",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    "Settings",
-                    style: TextStyle(color: Colors.white, fontSize: 20),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                ],
-              ),
+            Row(
+              children: [
+                if (MediaQuery.of(context).size.width > smallSize)
+                  const Expanded(child: SidebarComponent()),
+                const Expanded(flex: 5, child: HomeScreen()),
+              ],
             ),
-            const Spacer(),
-            const Box(),
+            const Align(
+              alignment: Alignment.bottomCenter,
+              child: MusicPlayerControlsComponent(),
+            ),
           ],
         ),
-        bottomNavigationBar: const MusicPlays(),
       ),
     );
   }
