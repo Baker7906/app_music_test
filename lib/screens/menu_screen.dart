@@ -1,55 +1,75 @@
+import 'package:app_music/widgets/mix_for_you.dart';
+import 'package:app_music/widgets/mix_singer.dart';
+import 'package:app_music/widgets/our_mix.dart';
 import 'package:flutter/material.dart';
 
-class Menu {
-  const Menu({
-    required this.id,
-    required this.icon,
-    this.color = Colors.white,
-  });
-
-  final String id;
-  final Color color;
-  final IconButton icon;
-}
-
-List<Menu> menuData = [
-  Menu(
-      id: 'menu1',
-      icon: IconButton(
-        icon: const Icon(Icons.menu),
-        onPressed: () {
-          // Add your onPressed functionality here
-        },
-      ),
-      color: Colors.white),
-  Menu(
-    id: 'menu2',
-    icon: IconButton(
-      icon: const Icon(Icons.menu),
-      onPressed: () {
-        // Add your onPressed functionality here
-      },
-    ),
-  ),
-  // Add more menu items as needed
-];
-
-class MenuScreen extends StatelessWidget {
-  const MenuScreen({super.key});
+class Box extends StatelessWidget {
+  const Box({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: menuData.length,
-      itemBuilder: (context, index) {
-        final item = menuData[index];
-        return ListTile(
-          leading: item.icon,
-          onTap: () {
-            // Add your item tap functionality here
-          },
-        );
-      },
+    return Center(
+      child: Container(
+        width: 1150,
+        height: 700,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(25),
+          gradient: const LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color.fromARGB(255, 37, 37, 37),
+              Color.fromARGB(255, 37, 37, 37),
+            ],
+          ),
+        ),
+        child:  Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Row(children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
+                child: Row(
+                  children: [
+                    MixForYou(),
+                    SizedBox(
+                      width: 120,
+                    ),
+                    MixSinger(),
+                    SizedBox(
+                      width: 120,
+                    ),
+                    OurMix(),
+                  ],
+                ),
+              ),
+            ]),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 100),
+                child: Row(
+                  children: [
+                    const Text(
+                      "My Playlist",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    const Spacer(),
+                    IconButton(onPressed: (){}, icon: const Icon(Icons.filter_alt_outlined))
+                  ],
+                )),
+            const Spacer(),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+              child: Text(
+                "Wowoo Wow",
+                style: TextStyle(fontSize: 50, color: Colors.white),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

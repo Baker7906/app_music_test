@@ -1,3 +1,4 @@
+import 'package:app_music/screens/menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -6,13 +7,13 @@ void main() {
 }
 
 class App extends StatelessWidget {
-  const App({super.key});
+  const App({super.key,});
 
   @override
   Widget build(BuildContext context) {
     final theme = ThemeData(
       colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 34, 33, 33),
+          seedColor: const Color.fromARGB(255, 97, 97, 97),
           brightness: Brightness.dark),
       textTheme: GoogleFonts.latoTextTheme(),
     );
@@ -20,154 +21,154 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: theme,
       home: Scaffold(
-        body: Column(
+        appBar: AppBar(
+          title: const Text(
+            "Rhymitics",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+            ),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.notifications),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.account_circle),
+            ),
+          ],
+        ),
+        body: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                const Text(
-                  "Rhymitics",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 50,
                   ),
-                ),
-                const SizedBox(
-                  width: 200,
-                ),
-                const Spacer(),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.notifications),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.account_circle),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            const Text(
-              "Menu",
-              style: TextStyle(
-                color: Color.fromARGB(124, 255, 255, 255),
-                fontSize: 20,
+                  Text(
+                    "Menu",
+                    style: TextStyle(
+                      color: Color.fromARGB(124, 255, 255, 255),
+                      fontSize: 20,
+                    ),
+                  ),
+                  Text(
+                    "Search",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Radio",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Podcast",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Music",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Music Videos",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Favourites",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    height: 50,
+                  ),
+                  Text(
+                    "Organizations",
+                    style: TextStyle(
+                        color: Color.fromARGB(139, 255, 255, 255),
+                        fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "About us ",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Search",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Security",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Help",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Settings",
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                ],
               ),
             ),
+            const Spacer(),
+            const Box(),
             const Text(
-              "Search",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Radio",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Podcast",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Music",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Music Videos",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Favourites",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            const Text(
-              "Organizations",
+              "Text 1",
               style: TextStyle(
-                  color: Color.fromARGB(139, 255, 255, 255), fontSize: 20),
+                color: Colors.white,
+                fontSize: 18,
+              ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(width: 10),
             const Text(
-              "About us ",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Search",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Security",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Help",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const Text(
-              "Settings",
-              style: TextStyle(color: Colors.white, fontSize: 20),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                Text(
-                  "Text 1",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Text(
-                  "Text 2",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                  ),
-                ),
-              ],
+              "Text 2",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
             ),
           ],
         ),
