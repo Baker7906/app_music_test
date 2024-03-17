@@ -2,6 +2,7 @@ import 'package:app_music/widgets/mix_for_you.dart';
 import 'package:app_music/widgets/mix_singer.dart';
 import 'package:app_music/widgets/our_mix.dart';
 import 'package:flutter/material.dart';
+import 'package:app_music/screens/playlist_screen.dart';
 
 class Box extends StatelessWidget {
   const Box({super.key});
@@ -11,19 +12,19 @@ class Box extends StatelessWidget {
     return Center(
       child: Container(
         width: 1150,
-        height: 700,
+        height: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
           gradient: const LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Color.fromARGB(255, 37, 37, 37),
-              Color.fromARGB(255, 37, 37, 37),
+              Color.fromARGB(255, 25, 25, 25),
+              Color.fromARGB(255, 25, 25, 25),
             ],
           ),
         ),
-        child:  Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Row(children: [
@@ -45,27 +46,30 @@ class Box extends StatelessWidget {
               ),
             ]),
             Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 100),
-                child: Row(
-                  children: [
-                    const Text(
-                      "My Playlist",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold),
+              padding: const EdgeInsets.symmetric(horizontal: 100),
+              child: Row(
+                children: [
+                  const Text(
+                    "My Playlist",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  const Spacer(),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.filter_alt_outlined,
                     ),
-                    const Spacer(),
-                    IconButton(onPressed: (){}, icon: const Icon(Icons.filter_alt_outlined))
-                  ],
-                )),
-            const Spacer(),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-              child: Text(
-                "Wowoo Wow",
-                style: TextStyle(fontSize: 50, color: Colors.white),
+                  ),
+                ],
               ),
+            ),
+            const Padding(
+              padding:
+                  EdgeInsets.symmetric(horizontal: 100, vertical: 30),
+              child:PlaylistScreen(),
             ),
           ],
         ),

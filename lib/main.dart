@@ -1,4 +1,5 @@
 import 'package:app_music/screens/menu_screen.dart';
+import 'package:app_music/screens/music_play.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -155,23 +156,9 @@ class App extends StatelessWidget {
             ),
             const Spacer(),
             const Box(),
-            const Text(
-              "Text 1",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
-            ),
-            const SizedBox(width: 10),
-            const Text(
-              "Text 2",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
-            ),
           ],
         ),
+        bottomNavigationBar: const MusicPlays(),
       ),
     );
   }
